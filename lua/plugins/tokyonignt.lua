@@ -11,6 +11,10 @@ return {
       hl.Normal = { bg = c.none }
       hl.NormalNC = { bg = c.none }
       hl.NormalSB = { bg = c.none }
+      hl.WinSeparator = {
+        fg = c.fg_float,
+        bold = true,
+      }
     end,
     transparent = true,
     styles = {

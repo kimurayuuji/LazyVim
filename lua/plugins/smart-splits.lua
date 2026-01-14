@@ -1,4 +1,4 @@
----@type LazyPluginSpec
+---@type LazySpec
 return {
   {
     "mrjones2014/smart-splits.nvim",
@@ -36,29 +36,34 @@ return {
         function()
           require("smart-splits").resize_left()
         end,
-        desc = "Resize cursor left",
+        desc = "Resize left",
       },
       {
         "<M-j>",
         function()
           require("smart-splits").resize_down()
         end,
-        desc = "Resize cursor down",
+        desc = "Resize down",
       },
       {
         "<M-k>",
         function()
           require("smart-splits").resize_up()
         end,
-        desc = "Resize cursor up",
+        desc = "Resize up",
       },
       {
         "<M-l>",
         function()
           require("smart-splits").resize_right()
         end,
-        desc = "Resize cursor right",
+        desc = "Resize right",
       },
+    },
+    ----@module 'smart-splits'
+    ----@type SmartSplitsConfig
+    opts = {
+      default_amount = 1,
     },
   },
 }
