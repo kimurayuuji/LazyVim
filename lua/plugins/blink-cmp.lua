@@ -12,7 +12,7 @@ return {
       ["<Up>"] = { "select_prev", "fallback" },
       ["<Down>"] = { "select_next", "fallback" },
       ["<Esc>"] = { "cancel", "fallback" },
-      -- ["<Tab>"] = { "accept", "fallback" },
+      ["<Tab>"] = { "accept", "fallback" },
     },
 
     cmdline = {

@@ -1,6 +1,9 @@
+---@type LazySpec
 return {
   {
     "folke/snacks.nvim",
+    ---@module "snacks.nvim"
+    ---@type snacks.Config
     opts = {
       picker = {
         sources = {
@@ -8,12 +11,8 @@ return {
             -- サイドバー風にしたい場合は preset を併用
             layout = {
               preset = "sidebar",
-              preview = false,
-              -- ←ここが重要（layout が二重になっている）
               layout = {
                 position = "right",
-                -- 幅を調整したい場合は size や width も指定可
-                -- size = 0.25, -- 画面幅の25%など
               },
             },
           },
@@ -22,6 +21,19 @@ return {
       notifier = {
         enabled = true,
         timeout = 10000,
+      },
+      terminal = {
+        win = { style = "terminal", border = "rounded", width = 0.8, height = 0.8 },
+        shell = "zsh",
+      },
+    },
+    keys = {
+      {
+        "<leader>t",
+        function()
+          Snacks.terminal.toggle("zsh")
+        end,
+        desc = "Toggle term (float)",
       },
     },
   },
