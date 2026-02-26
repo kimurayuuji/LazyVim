@@ -2,6 +2,7 @@
 return {
   {
     "mrjones2014/smart-splits.nvim",
+    version = "v2.0.5",
     keys = {
       {
         "<C-w>h",
@@ -58,6 +59,34 @@ return {
           require("smart-splits").resize_right()
         end,
         desc = "Resize right",
+      },
+      {
+        "<C-M-h>",
+        function()
+          require("smart-splits").swap_buf_left({ move_cursor = true })
+        end,
+        desc = "Swap left",
+      },
+      {
+        "<C-M-j>",
+        function()
+          require("smart-splits").swap_buf_down({ move_cursor = true })
+        end,
+        desc = "Swap down",
+      },
+      {
+        "<C-M-k>",
+        function()
+          require("smart-splits").swap_buf_up({ move_cursor = true })
+        end,
+        desc = "Swap up",
+      },
+      {
+        "<C-M-l>",
+        function()
+          require("smart-splits").swap_buf_right({ move_cursor = true })
+        end,
+        desc = "Swap right",
       },
     },
     ----@module 'smart-splits'

@@ -1,18 +1,6 @@
-vim.keymap.set("v", "<Leader>*", function()
-  -- ヤンク（選択範囲をコピー）
-  vim.cmd "normal! y"
-
-  -- レジスタから取得
-  local selected = vim.fn.getreg '"'
-
-  -- エスケープして単語境界で囲む
-  local escaped = vim.fn.escape(selected, "\\")
-  vim.fn.setreg("/", "\\<" .. escaped .. "\\>")
-  vim.cmd "set hlsearch"
-end, { noremap = true, silent = true, desc = "Search selected text" })
-
 vim.keymap.set("n", "<leader>Q", function()
-  local reg = string.char(vim.fn.getchar())
+  local key = vim.fn.getchar()
+  local reg = type(key) == "number" and vim.fn.nr2char(key) or key
 
   local reg_content = vim.fn.getreg(reg)
 
