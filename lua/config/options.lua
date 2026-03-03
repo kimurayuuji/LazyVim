@@ -19,3 +19,4 @@ vim.api.nvim_create_autocmd("TextChanged", {
   end,
 })
 
+vim.opt.relativenumber = false
