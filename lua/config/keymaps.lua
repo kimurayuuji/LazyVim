@@ -1,6 +1,11 @@
 vim.keymap.set("n", "<leader>Q", function()
   local key = vim.fn.getchar()
-  local reg = type(key) == "number" and vim.fn.nr2char(key) or key
+
+  local reg = key
+  if type(key) == "number" then
+    reg = vim.fn.nr2char(key)
+  end
+  ---@cast reg string
 
   local reg_content = vim.fn.getreg(reg)
 
@@ -29,4 +34,9 @@ vim.keymap.set("n", "<C-w>-", "<C-w>s", { desc = "Horizontal Split" })
 vim.keymap.set("n", "<C-w>|", "<C-w>v", { desc = "Vertical Split" })
 vim.keymap.set("n", "<C-w>x", "<C-w>c", { desc = "Close split pane" })
 
--- TODO LSP
+
+-- VSCode
+if vim.g.vscode then
+  vim.keymap.set('n', 'gr', [[<Cmd>call VSCodeNotify('editor.action.referenceSearch.trigger')<CR>]])
+  vim.keymap.set('n', 'gR', [[<Cmd>call VSCodeNotify('references-view.findReferences')<CR>]])
+end
