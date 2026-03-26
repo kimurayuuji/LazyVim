@@ -4,12 +4,13 @@ return {
     lazy = false,
     dependencies = { "saghen/blink.cmp" },
     ft = { "markdown" },
-    opt = {
+    opts = {
       preview = {
-        enable = false
-      }
+        enable = false,
+      },
     },
-    config = function()
+    config = function(_, opts)
+      require("markview").setup(opts)
       require("which-key").add({
         { "<leader>m", group = "markdown", icon = "󰽛" },
       })
@@ -26,5 +27,5 @@ return {
     keys = {
       { "<leader>mp", "<cmd>MarkdownPreview<CR>", desc = "Markdown Preview" },
     },
-  }
-};
+  },
+}

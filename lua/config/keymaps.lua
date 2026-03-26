@@ -36,6 +36,7 @@ vim.keymap.set("n", "<C-w>x", "<C-w>c", { desc = "Close split pane" })
 
 -- VSCode
 if vim.g.vscode then
+  vim.keymap.set("n", "<leader>e", [[<Cmd>call VSCodeNotify('workbench.view.explorer')<CR>]], { desc = "Explorer: Focus on folder view" })
   vim.keymap.set("n", "gr", [[<Cmd>call VSCodeNotify('editor.action.referenceSearch.trigger')<CR>]])
   vim.keymap.set("n", "gR", [[<Cmd>call VSCodeNotify('references-view.findReferences')<CR>]])
   vim.keymap.set("n", "za", [[<Cmd>call VSCodeNotify('editor.toggleFold')<CR>]])
