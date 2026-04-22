@@ -20,3 +20,22 @@ vim.api.nvim_create_autocmd("TextChanged", {
 })
 
 vim.opt.relativenumber = false
+
+-- Copy paths to clipboard
+vim.api.nvim_create_user_command("CopyFileName", function()
+  local filename = vim.fn.expand("%:t")
+  vim.fn.setreg("+", filename)
+  vim.notify("Copied filename: " .. filename)
+end, { desc = "Copy filename to clipboard" })
+
+vim.api.nvim_create_user_command("CopyRelPath", function()
+  local rel_path = vim.fn.expand("%")
+  vim.fn.setreg("+", rel_path)
+  vim.notify("Copied relative path: " .. rel_path)
+end, { desc = "Copy relative path to clipboard" })
+
+vim.api.nvim_create_user_command("CopyAbsPath", function()
+  local abs_path = vim.fn.expand("%:p")
+  vim.fn.setreg("+", abs_path)
+  vim.notify("Copied absolute path: " .. abs_path)
+end, { desc = "Copy absolute path to clipboard" })
