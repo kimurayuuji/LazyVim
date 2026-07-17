@@ -34,6 +34,19 @@ vim.keymap.set("n", "<C-w>-", "<C-w>s", { desc = "Horizontal Split" })
 vim.keymap.set("n", "<C-w>|", "<C-w>v", { desc = "Vertical Split" })
 vim.keymap.set("n", "<C-w>x", "<C-w>c", { desc = "Close split pane" })
 
+-- File path copy
+vim.keymap.set("n", "<leader>fy", function()
+  local path = vim.fn.expand("%:.")
+  vim.fn.setreg("+", path)
+  vim.notify("Copied: " .. path)
+end, { desc = "Copy Relative File Path" })
+
+vim.keymap.set("n", "<leader>fY", function()
+  local path = vim.fn.expand("%:p")
+  vim.fn.setreg("+", path)
+  vim.notify("Copied: " .. path)
+end, { desc = "Copy Absolute File Path" })
+
 -- VSCode
 if vim.g.vscode then
   vim.keymap.set(
@@ -45,4 +58,6 @@ if vim.g.vscode then
   vim.keymap.set("n", "gr", [[<Cmd>call VSCodeNotify('editor.action.referenceSearch.trigger')<CR>]])
   vim.keymap.set("n", "gR", [[<Cmd>call VSCodeNotify('references-view.findReferences')<CR>]])
   vim.keymap.set("n", "za", [[<Cmd>call VSCodeNotify('editor.toggleFold')<CR>]])
+  vim.keymap.set("n", "<leader>fy", [[<Cmd>call VSCodeNotify('copyRelativeFilePath')<CR>]], { desc = "Copy Relative File Path" })
+  vim.keymap.set("n", "<leader>fY", [[<Cmd>call VSCodeNotify('copyFilePath')<CR>]], { desc = "Copy Absolute File Path" })
 end
